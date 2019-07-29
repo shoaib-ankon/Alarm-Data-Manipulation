@@ -16,12 +16,10 @@ public function import($file)
 {
 	$file=fopen($file,'r');
 	while ($row=fgetcsv($file)){
-		print "<pre>";
-		print_r($row);
-		print "</pre>";
+		
 		while ($row=fgetcsv($file)){
 			$value="'".implode("','", $row)."'";
-			$q="INSERT INTO cata(link,alarm,start,endt,type,ip,status,location,extra) VALUES(".$value.")";
+			$q="INSERT INTO cata (blank, occur, link, alarm, status, state, ip, hexa, anblank, location)  VALUES(".$value.")";
 			if ($this->query($q)){
 				$this->state_csv=true;}
 				else{
